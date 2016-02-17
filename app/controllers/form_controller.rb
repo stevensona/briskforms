@@ -17,6 +17,7 @@ class FormController < ApplicationController
     @form.confirm_url = SecureRandom.hex
     @form.confirmed = false
     if @form.save
+      FormMailer.form_confirmation(@form).deliver_now
       flash[:notice] = "Form action handler created"
       redirect_to "/show/#{@form.admin_url}"
     else
