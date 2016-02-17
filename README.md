@@ -10,7 +10,7 @@ see gemfile for more
 
 ## Build
 ```
-git clone
+git clone https://github.com/stevensona/formaction
 bundle install --without production
 rake db:migrate
 rails s
