@@ -1,6 +1,6 @@
 # Brisk Forms
 
-Form submission service for static sites. Keep your email address private. [Try it out.](https://briskforms.herokuapp.com/)
+Form submission service for static sites. Keep your email address private. [Try it out.](http://briskforms.com/)
 
 ## Prerequisites
 * Ruby 2.2.2
