@@ -1,4 +1,4 @@
-# formaction
+# Brisk Forms
 
 Form submission service for static sites. Keep your email address private. [Try it out.](http://young-retreat-61807.herokuapp.com)
 
@@ -10,7 +10,7 @@ see gemfile for more
 
 ## Build
 ```
-git clone https://github.com/stevensona/formaction
+git clone https://github.com/stevensona/briskforms
 bundle install --without production
 rake db:migrate
 rails s

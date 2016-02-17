@@ -1,5 +1,5 @@
 class FormMailer < ApplicationMailer
-  default from: 'admin@frmactn.com'
+  default from: 'admin@briskforms.com'
 
   def form_submission(form, contents)
     @contents = contents

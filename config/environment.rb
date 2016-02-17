@@ -8,7 +8,7 @@ Rails.application.initialize!
 ActionMailer::Base.smtp_settings = {
   :user_name => ENV['SENDGRID_USERNAME'],
   :password => ENV['SENDGRID_PASSWORD'],
-  :domain => 'nodomain.com',
+  :domain => 'briskforms.com',
   :address => 'smtp.sendgrid.net',
   :port => 587,
   :authentication => :plain,
