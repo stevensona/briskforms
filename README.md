@@ -1,4 +1,4 @@
-# useaction
+# formaction
 
 Form submission service for static sites. Keep your email address private. [Try it out.](http://young-retreat-61807.herokuapp.com)
 
