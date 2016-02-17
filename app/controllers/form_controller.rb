@@ -16,7 +16,7 @@ class FormController < ApplicationController
     @form.admin_url = SecureRandom.hex
     if @form.save
       flash[:notice] = "Form action handler created"
-      redirect_to "/form/info/#{@form.admin_url}"
+      redirect_to "/form/show/#{@form.admin_url}"
     else
       flash[:error] = "Something went wrong. Please fill out the form completely."
       redirect_to "/form/new"
@@ -30,7 +30,7 @@ class FormController < ApplicationController
     redirect_to root_path
   end
 
-  def info
+  def show
     @form = Form.find_by! admin_url: params[:id]
   end
 

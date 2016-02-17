@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get 'form/new'                      #new form action form
   post 'form/new' => 'form#create'    #create new form action
-  get 'form/info/:id' => 'form#info'  #form admin section
+  get 'form/show/:id' => 'form#show'  #form admin section
   get 'form/delete/:id' => 'form#delete'  #form admin section
 
   post 'go/:id' => 'form#submit' #external form submission
