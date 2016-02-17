@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'form/info/:id' => 'form#info'  #form admin section
   get 'form/delete/:id' => 'form#delete'  #form admin section
 
-  post 'submit/:id' => 'form#submit' #external form submission
+  post 'go/:id' => 'form#submit' #external form submission
 
 
   root 'static_pages#home'

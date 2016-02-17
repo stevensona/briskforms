@@ -15,7 +15,7 @@ class FormController < ApplicationController
     @form.url = SecureRandom.hex
     @form.admin_url = SecureRandom.hex
     if @form.save
-      flash[:notice] = "Form Action handler created!"
+      flash[:notice] = "Form action handler created"
       redirect_to "/form/info/#{@form.admin_url}"
     else
       flash[:error] = "Something went wrong. Please fill out the form completely."
@@ -26,7 +26,7 @@ class FormController < ApplicationController
 
   def delete
     Form.where(admin_url: params[:id]).destroy_all 
-    flash[:notice] = "Form Action handler destroyed"
+    flash[:notice] = "Form action handler destroyed"
     redirect_to root_path
   end
 
