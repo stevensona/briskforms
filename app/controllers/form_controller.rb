@@ -14,12 +14,12 @@ class FormController < ApplicationController
     @form.failure_url = params['failure_url']
     @form.url = SecureRandom.hex
     @form.admin_url = SecureRandom.hex
-    if @form.save #TODO do this better flash success
+    if @form.save
       flash[:notice] = "Form Action handler created!"
       redirect_to "/form/info/#{@form.admin_url}"
     else
       flash[:error] = "Something went wrong. Please fill out the form completely."
-      redirect_to "/form/new" #TODO flash error
+      redirect_to "/form/new"
     end
 
   end
