@@ -1,0 +1,20 @@
+<% provide(:title, 'create new handler') %>
+
+<%= form_tag do %>
+  <%= label_tag(:source_url, "Source URL:") %>
+  <%= text_field_tag(:source_url) %>
+  <%= label_tag(:email, "Response Email:") %>
+  <%= text_field_tag(:email) %>
+  <%= label_tag(:success_url, "Submit Success URL") %>
+  <%= text_field_tag(:success_url) %>
+  <%= label_tag(:failure_url, "Submit Failure URL") %>
+  <%= text_field_tag(:failure_url) %>
+
+  <!-- TODO: Agree to terms, send admin link to email checkboxes -->
+
+  <%= submit_tag("Get Action URL") %>
+
+
+
+
+<% end %>

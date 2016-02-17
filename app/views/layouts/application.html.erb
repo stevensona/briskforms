@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Action</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<header>
+  <h1><a href="/">Form Action</a></h1>
+  <aside>Free, secure HTML form submission for static sites</aside>
+</header>
+
+<h2><%= yield :title %></h2>
+
+
+<% if flash[:notice] %>
+<div class="alert notice"><%= flash[:notice] %></div>
+<% end %>
+<% if flash[:error] %>
+<div class="alert error"><%= flash[:error] %></div>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>

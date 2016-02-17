@@ -1,0 +1,17 @@
+New submission from your Form Action!
+======
+Contents:
+
+    <% @contents.each do |k, v| %>
+    <% if k != 'controller' and k != 'action' and k != 'id' %>
+    *<%= k %>:
+        <%= v %>
+        
+    <% end %>
+    <% end %>
+
+
+Administration
+    Details for this form handler including stopping these emails, visit <%= "http://young-retreat-61807.herokuapp.com/form/info/#{@form.admin_url}" %>.
+    
+    Thanks for using form action to process form submissions!

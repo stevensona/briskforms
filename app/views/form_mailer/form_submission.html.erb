@@ -1,0 +1,14 @@
+<h1>New submission from your Form Action!</h1>
+
+<h2>Contents</h2>
+
+<% @contents.each do |k, v| %>
+<% if k != 'controller' and k != 'action' and k != 'id' %>
+<b><%= k %></b> - <%= v %><br>
+<% end %>
+<% end %>
+
+<h2>Administration</h2>
+<p>Details for this form handler, click <a href="<%= "http://young-retreat-61807.herokuapp.com/form/info/#{@form.admin_url}" %>">here</a>.</p>
+<p>To stop receiving these emails, delete the form submission handler by clicking <a href="<%= "http://young-retreat-61807.herokuapp.com/form/delete/#{@form.admin_url}" %>">here</a>.</p>
+<p>Thanks for using form action to process form submissions!</p>

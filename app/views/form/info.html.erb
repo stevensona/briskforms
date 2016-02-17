@@ -1,0 +1,8 @@
+<% provide(:title, 'form handler info') %>
+
+<p>Your form action URL is: <%= "#{request.base_url}/submit/#{@form.url}" %> <a href="#">copy to clipboard</a></p>
+<p>Accepting submissions from: <%= @form.source_url %></p>
+<p>Responses are being sent to: <%= @form.email %></p>
+<p>Successful submissions forward to: <%= @form.success_url %></p>
+<p>Failed submissions forward to: <%= @form.failure_url %></p>
+<p><a href="<%= "#{request.base_url}/form/delete/#{@form.admin_url}" %>">delete</a></p>
