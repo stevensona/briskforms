@@ -11,17 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160217034011) do
+ActiveRecord::Schema.define(version: 20160217232515) do
 
   create_table "forms", force: :cascade do |t|
-    t.string   "url",         null: false
-    t.string   "email",       null: false
-    t.string   "success_url", null: false
-    t.string   "failure_url", null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.string   "source_url",  null: false
-    t.string   "admin_url",   null: false
+    t.string   "url",                         null: false
+    t.string   "email",                       null: false
+    t.string   "success_url",                 null: false
+    t.string   "failure_url",                 null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.string   "source_url",                  null: false
+    t.string   "admin_url",                   null: false
+    t.boolean  "confirmed",   default: false, null: false
+    t.string   "confirm_url",                 null: false
   end
 
 end

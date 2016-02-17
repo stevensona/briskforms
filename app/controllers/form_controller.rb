@@ -14,12 +14,27 @@ class FormController < ApplicationController
     @form.failure_url = params['failure_url']
     @form.url = SecureRandom.hex
     @form.admin_url = SecureRandom.hex
+    @form.confirm_url = SecureRandom.hex
+    @form.confirmed = false
     if @form.save
       flash[:notice] = "Form action handler created"
-      redirect_to "/form/show/#{@form.admin_url}"
+      redirect_to "/show/#{@form.admin_url}"
     else
       flash[:error] = "Something went wrong. Please fill out the form completely."
-      redirect_to "/form/new"
+      redirect_to "/new"
+    end
+  end
+
+  def confirm
+    @form = Form.find_by! confirm_url: params[:id]
+    @form.confirmed = true
+    @form.save
+    if @form.save
+      flash[:notice] = "Thank you for confirming your email. Your form is now ready to use."
+      redirect_to "/show/#{@form.admin_url}"
+    else
+      flash[:error] = "Something went wrong."
+      redirect_to root_path
     end
 
   end
@@ -32,12 +47,17 @@ class FormController < ApplicationController
 
   def show
     @form = Form.find_by! admin_url: params[:id]
+    flash[:error] = "This form has not yet been confirmed. Please check your email for a link." if not @form.confirmed
   end
 
   def submit
     #TODO throttle submission rate to 10 per form per hour?
     @form = Form.find_by! url: params[:id]
-    FormMailer.form_submission(@form, params).deliver_now
-    redirect_to @form.success_url #TODO direct to failure if something fucks up
+    if @form.confirmed
+      FormMailer.form_submission(@form, params).deliver_now
+      redirect_to @form.success_url #TODO direct to failure if something fucks up
+    else
+      redirect_to @form.failure_url #error form is not confirmed. fail silently?  
+    end
   end
 end

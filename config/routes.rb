@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
-  get 'form/new'                      #new form action form
-  post 'form/new' => 'form#create'    #create new form action
-  get 'form/show/:id' => 'form#show'  #form admin section
-  get 'form/delete/:id' => 'form#delete'  #form admin section
-
-  post 'go/:id' => 'form#submit' #external form submission
+  get 'new' => 'form#new'                     #new form action form
+  post 'new' => 'form#create'         #create new form action
+  get 'show/:id' => 'form#show'       #form admin section
+  get 'delete/:id' => 'form#delete'   #form admin section
+  get 'confirm/:id' => 'form#confirm'
+  post 'go/:id' => 'form#submit'      #external form submission
 
 
   root 'static_pages#home'
