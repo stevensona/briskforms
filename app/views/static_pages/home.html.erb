@@ -1,8 +1,17 @@
 <section>
-  <h2>HTML forms delivered right to your email inbox for free.</h2>
-  <a href="/new">Get started now!</a>
-</section>
-<section>
-  <h2>How does it work?</h2>
-  <p>Simply fill out some basic information such as where you'd like form results to be sent and result URLs, and you're off to the races. We give you a URL for your form's action attribute and no one will know your email address. No database, no costs, no reason not to use it.
+  <h2>HTML forms delivered right to your email inbox <em>for free</em>.</h2>
+
+  <p>Submit your form to our URL, and we'll forward the contents to your email. No database, no scripting, no cost! Ideal for people wishing to implement a contact form <em>without exposing your email address</em> on static sites such as those created with Jekyll, Pelican, or Hakyll.</p>
+  <a href="/new">Get Started Now!</a>
+
+  <h2>Why</h2>
+  <p>Similar services all have the same problem: Your email address is exposed to would-be spammers, unless you pay them. Brisk Forms side-steps this issue by providing you with a unique and secure URL to use in place of your email address. You can even stop emails at any time with a click of a button.</p>
+  <h2>How to use</h2>
+  <p>Go <a href="/new">here</a> and fill in the fields. Source URL is the URL of your page containing your form. It works best if you include just the base URL (for example 'mystaticsite.com' instead of 'http://www.mystaticsite.com/pages/contactme'). 'Response Email' is the email address at which you'd like to receive responses and the address the confirmation email will be sent to. 'Submit Success URL' is the URL your users will be forwarded to upon successful submission of your form and failure is similar. After clicking the Create button, you are provided with an 'Action URL'. Just click the link in the confirmation email and copy the Action URL into your form's action attribute and you're off to the races. Make sure your form's elements 'name' attributes are specified as well. Example:</p>
+
+  <%= image_tag("sample.png") %>
+  
+  <p>When the form is completed and submitted, the results of the form will be emailed to you, and your user will be forwarded to wherever you'd like.
+  <a href="/new">Start Now</a>, it's free!</p>
+
 </section>
