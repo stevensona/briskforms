@@ -54,11 +54,16 @@ class FormController < ApplicationController
   def submit
     #TODO throttle submission rate to 10 per form per hour?
     @form = Form.find_by! url: params[:id]
-    if @form.confirmed
-      FormMailer.form_submission(@form, params).deliver_now
-      redirect_to @form.success_url #TODO direct to failure if something fucks up
+    if not request.include? @form.source_url
+      #request not coming from designated url, not allowed
+      render status: :forbidden
     else
-      redirect_to @form.failure_url #error form is not confirmed. fail silently?  
+      if @form.confirmed
+        FormMailer.form_submission(@form, params).deliver_now
+        redirect_to @form.success_url #TODO direct to failure if something fucks up
+      else
+        redirect_to @form.failure_url #error form is not confirmed or  fail silently?  
+      end
     end
   end
 end
