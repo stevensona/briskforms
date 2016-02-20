@@ -5,4 +5,7 @@ class StaticPagesController < ApplicationController
   end
   def guide
   end
+  def lets_encrypt
+    render text: ENV['LETSENCRYPT']
+  end
 end
