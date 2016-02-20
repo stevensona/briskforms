@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'confirm/:id' => 'form#confirm'
   post 'go/:id' => 'form#submit'      #external form submission
 
+  get 'contact' => 'static_pages#contact'
 
   root 'static_pages#home'
 

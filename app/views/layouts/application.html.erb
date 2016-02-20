@@ -2,6 +2,10 @@
 <html>
 <head>
   <title>Brisk Forms</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -9,32 +13,32 @@
 </head>
 <body>
 
-<header>
-  <h1><a href="/">Brisk Forms</a></h1>
-  <aside>Free, secure HTML form submission for static sites</aside>
-</header>
+<div class="container">
+  <div class="header clearfix">
+    <nav>
+      <ul class="nav nav-pills pull-right">
+        <li role="presentation" id="nav_home"><a href="/">Home</a></li>
+        <li role="presentation" id="nav_new"><a href="/new">New Form</a></li>
+        <li role="presentation" id="nav_contact"><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+    <h3 class="text-muted">Brisk Forms</h3>
+  </div>
 
-<h2><%= yield :title %></h2>
+  <%= yield %>
 
-
-<% if flash[:notice] %>
-<div class="alert notice"><%= flash[:notice] %></div>
-<% end %>
-<% if flash[:error] %>
-<div class="alert error"><%= flash[:error] %></div>
-<% end %>
-
-<%= yield %>
-
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- website ad -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:728px;height:90px"
-     data-ad-client="ca-pub-3959879379553229"
-     data-ad-slot="9313207191"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- website ad -->
+  <ins class="adsbygoogle"
+       style="display:inline-block;width:728px;height:90px"
+       data-ad-client="ca-pub-3959879379553229"
+       data-ad-slot="9313207191"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  <footer class="footer">
+    <p>&copy; 2016 Adam Stevenson</p>
+  </footer>
+</div>
 </body>
 </html>

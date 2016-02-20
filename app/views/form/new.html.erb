@@ -1,4 +1,13 @@
-<% provide(:title, 'Create New Form Handler') %>
+
+<h2>Create new form handler</h2>
+
+
+<% if flash[:notice] %>
+<div class="alert notice"><%= flash[:notice] %></div>
+<% end %>
+<% if flash[:error] %>
+<div class="alert error"><%= flash[:error] %></div>
+<% end %>
 
 <%= form_tag do %>
   <%= label_tag(:source_url, "Source URL:") %>
@@ -14,7 +23,8 @@
 
   <%= submit_tag("Create") %>
 
-
-
-
 <% end %>
+
+<script>
+$('#nav_new').addClass('active');
+</script>
