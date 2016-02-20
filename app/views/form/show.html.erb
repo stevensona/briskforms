@@ -1,14 +1,47 @@
-<% provide(:title, 'form handler info') %>
-
+<% if flash[:notice] %>
+<div class="alert alert-info"><%= flash[:notice] %></div>
+<% end %>
+<div class="page-header">
+<h2>Form Handler Details</h2>
+</div>
+<% if flash[:error] %>
+<div class="alert alert-danger"><%= flash[:error] %></div>
+<% end %>
 Set your form's action attribute to:
-<div class="param"><%= "#{request.base_url}/go/#{@form.url}" %></div>
+<div class="well"><%= "#{request.base_url}/go/#{@form.url}" %></div>
+
+<%= form_tag('/new', class:'form-horizontal') do %>
+  <div class="form-group">
+    <%= label_tag(:source_url, 'Source URL', class:'col-sm-3 control-label') %>
+    <div class="col-sm-9">
+    <p class="form-control-static"><%= @form.source_url %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= label_tag(:email, 'Response Email', class:'col-sm-3 control-label') %>
+    <div class="col-sm-9">
+      <p class="form-control-static"><%= @form.email %></p>
+    </div>
+  </div>
+  <div class="form-group">
+   <%= label_tag(:success_url, 'Success Redirect', class:'col-sm-3 control-label') %>
+    <div class="col-sm-9">
+      <p class="form-control-static"><%= @form.success_url %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= label_tag(:failure_url, 'Failure Redirect', class:'col-sm-3 control-label') %>
+    <div class="col-sm-9">
+      <p class="form-control-static"><%= @form.failure_url %></p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-9">
+<a href="<%= "#{request.base_url}/delete/#{@form.admin_url}" %>" class="btn btn-danger">Delete Form Handler</a>
+    </div>
+  </div>
+
+<% end %>
 
 
-<h3>Information</h3>
-Accepting submissions from: <div class="param"><%= @form.source_url %></div>
-Responses are being sent to: <div class="param"><%= @form.email %></div>
-Successful submissions forward to: <div class="param"><%= @form.success_url %></div>
-Failed submissions forward to: <div class="param"><%= @form.failure_url %></div>
-
-
-<a href="<%= "#{request.base_url}/delete/#{@form.admin_url}" %>">delete</a>

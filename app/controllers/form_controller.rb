@@ -43,7 +43,7 @@ class FormController < ApplicationController
   def delete
     Form.where(admin_url: params[:id]).destroy_all 
     flash[:notice] = "Form action handler destroyed"
-    redirect_to root_path
+    redirect_to '/new'
   end
 
   def show
@@ -62,7 +62,7 @@ class FormController < ApplicationController
         FormMailer.form_submission(@form, params).deliver_now
         redirect_to @form.success_url #TODO direct to failure if something fucks up
       else
-        redirect_to @form.failure_url #error form is not confirmed or  fail silently?  
+        redirect_to @form.failure_url #error form is not confirmed or fail silently?  
       end
     end
   end
