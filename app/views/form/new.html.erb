@@ -2,11 +2,9 @@
 <div class="alert alert-info"><%= flash[:notice] %></div>
 <% end %>
 
-
 <div class="page-header">
-<h2>Create a new form handler</h2>
+<h2>Create form handler</h2>
 </div>
-
 
 
 <% if flash[:error] %>
@@ -18,24 +16,28 @@
     <%= label_tag(:source_url, 'Source URL', class:'col-sm-3 control-label') %>
     <div class="col-sm-9">
     <%= text_field_tag(:source_url, nil, class:'form-control') %>
+    <span class="help-block">Base URL from which forms will be submitted</span>
     </div>
   </div>
   <div class="form-group">
     <%= label_tag(:email, 'Response Email', class:'col-sm-3 control-label') %>
     <div class="col-sm-9">
     <%= text_field_tag(:email, nil, class:'form-control') %>
+    <span class="help-block">Email address form responses will be sent to</span>
     </div>
   </div>
   <div class="form-group">
    <%= label_tag(:success_url, 'Success Redirect', class:'col-sm-3 control-label') %>
     <div class="col-sm-9">
     <%= text_field_tag(:success_url, nil, class:'form-control') %>
+    <span class="help-block">URL to which users will be redirected upon a successful form submission</span>
     </div>
   </div>
   <div class="form-group">
     <%= label_tag(:failure_url, 'Failure Redirect', class:'col-sm-3 control-label') %>
     <div class="col-sm-9">
     <%= text_field_tag(:failure_url, nil, class:'form-control') %>
+    <span class="help-block">URL to which users will be redirected upon a failed form submission</span>
     </div>
   </div>
   <div class="form-group">
@@ -49,7 +51,7 @@
   </div>
   <div class="form-group">
     <div class="col-sm-offset-3 col-sm-9">
-      <%= submit_tag("Create", class:'btn btn-default') %>
+      <%= submit_tag("Create", class:'btn btn-primary btn-lg') %>
     </div>
   </div>
 

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post 'go/:id' => 'form#submit'      #external form submission
 
   get 'contact' => 'static_pages#contact'
+  get 'guide' => 'static_pages#guide'
 
   root 'static_pages#home'
 

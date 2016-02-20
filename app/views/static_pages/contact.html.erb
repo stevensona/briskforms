@@ -3,6 +3,31 @@
 <aside>We'd love to hear from you.</aside>
 </div>
 
+<%= form_tag('/#', class:'form-horizontal') do %>
+
+  <div class="form-group">
+    <%= label_tag(:email, 'Email', class:'col-sm-2 control-label') %>
+    <div class="col-sm-10">
+    <%= text_field_tag(:email, nil, class:'form-control') %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag(:message, 'Message', class:'col-sm-2 control-label') %>
+    <div class="col-sm-10">
+    <%= text_area_tag(:message, nil, rows: 5, class:'form-control') %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-9">
+      <%= submit_tag("Send Message", class:'btn btn-primary btn-lg') %>
+      <aside>(using <em>Brisk Forms</em>)</aside>
+    </div>
+  </div>
+
+<% end %>
+
 <script>
 $('#nav_contact').addClass('active');
 </script>
