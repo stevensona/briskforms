@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get 'contact' => 'static_pages#contact'
   get 'guide' => 'static_pages#guide'
-  get '.well-known/acme-challenge/:id' => 'static#lets_encrypt'
+  get '.well-known/acme-challenge/:id' => 'static_pages#lets_encrypt'
 
   root 'static_pages#home'
 
