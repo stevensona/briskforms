@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get '/404' => 'errors#not_found'
+  get '/403' => 'errors#forbidden'
+  get '/500' => 'errors#error'
+
   get 'new' => 'form#new'                     #new form action form
   post 'new' => 'form#create'         #create new form action
   get 'show/:id' => 'form#show'       #form admin section
