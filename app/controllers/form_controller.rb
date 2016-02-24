@@ -58,19 +58,19 @@ class FormController < ApplicationController
       #request not coming from designated url, not allowed
       respond_to do |format|
         format.json { render :json => {status: 'fail', message: 'bad referer'} }
-        format.html { render status: :forbidden }
+        format.all { render status: :forbidden }
       end
     else
       if @form.confirmed
         FormMailer.form_submission(@form, params).deliver_now
         respond_to do |format|
           format.json { render :json => {status: 'ok', message: 'form submitted'} }
-          format.html { redirect_to @form.success_url }
+          format.all { redirect_to @form.success_url }
         end
       else
         respond_to do |format|
           format.json { render :json => {status: 'fail', message: 'form not activated'} }
-          format.html { redirect_to @form.failure_url }
+          format.all { redirect_to @form.failure_url }
         end
       end
     end
