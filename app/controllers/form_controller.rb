@@ -54,15 +54,24 @@ class FormController < ApplicationController
   def submit
     #TODO throttle submission rate to 10 per form per hour?
     @form = Form.find_by! url: params[:id]
-    if not request.referer.include? @form.source_url
+    if request.referer.nil? or not request.referer.include? @form.source_url
       #request not coming from designated url, not allowed
-      render status: :forbidden
+      respond_to do |format|
+        format.json { render :json => {status: 'fail', message: 'bad referer'} }
+        format.html { render status: :forbidden }
+      end
     else
       if @form.confirmed
         FormMailer.form_submission(@form, params).deliver_now
-        redirect_to @form.success_url #TODO direct to failure if something fucks up
+        respond_to do |format|
+          format.json { render :json => {status: 'ok', message: 'form submitted'} }
+          format.html { redirect_to @form.success_url }
+        end
       else
-        redirect_to @form.failure_url #error form is not confirmed or fail silently?  
+        respond_to do |format|
+          format.json { render :json => {status: 'fail', message: 'form not activated'} }
+          format.html { redirect_to @form.failure_url }
+        end
       end
     end
   end
