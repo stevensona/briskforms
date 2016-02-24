@@ -54,7 +54,7 @@ class FormController < ApplicationController
   def submit
     #TODO throttle submission rate to 10 per form per hour?
     @form = Form.find_by! url: params[:id]
-    if request.referer.nil? or not request.referer.include? @form.source_url
+    if not request.referer.nil? or not request.referer.include? @form.source_url
       #request not coming from designated url, not allowed
       respond_to do |format|
         format.json { render :json => {status: 'fail', message: 'bad referer'} }
