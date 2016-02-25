@@ -4,7 +4,7 @@ class Form < ActiveRecord::Base
 
   def add_url_scheme
     unless self.success_url[/\Ahttp:\/\//] || self.url[/\Ahttps:\/\//]
-      self.success_url = "http://#{self.url}"
+      self.success_url = "http://#{self.success_url}"
     end
   end
 
