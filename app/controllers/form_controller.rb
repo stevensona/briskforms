@@ -1,5 +1,4 @@
 require 'securerandom'
-require 'addressable/uri'
 
 class FormController < ApplicationController
 
