@@ -1,4 +1,6 @@
 require 'securerandom'
+require 'addressable/uri'
+
 class FormController < ApplicationController
 
   protect_from_forgery except: :submit
