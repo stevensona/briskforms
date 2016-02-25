@@ -12,13 +12,7 @@
 <% end %>
 
 <%= form_tag('/new', class:'form-horizontal') do %>
-  <!--<div class="form-group">
-    <%= label_tag(:source_url, 'Source URL', class:'col-sm-3 control-label') %>
-    <div class="col-sm-9">
-    <%= text_field_tag(:source_url, nil, class:'form-control') %>
-    <span class="help-block">Base URL from which forms will be submitted</span>
-    </div>
-  </div>-->
+
   <div class="form-group">
     <%= label_tag(:email, 'Response Email', class:'col-sm-3 control-label') %>
     <div class="col-sm-9">
@@ -33,13 +27,7 @@
     <span class="help-block">URL to which users will be redirected upon a successful form submission</span>
     </div>
   </div>
-  <!--<div class="form-group">
-    <%= label_tag(:failure_url, 'Failure Redirect', class:'col-sm-3 control-label') %>
-    <div class="col-sm-9">
-    <%= text_field_tag(:failure_url, nil, class:'form-control') %>
-    <span class="help-block">URL to which users will be redirected upon a failed form submission</span>
-    </div>
-  </div>-->
+
   <div class="form-group">
     <div class="col-sm-offset-3 col-sm-9">
         <label>

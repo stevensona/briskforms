@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'contact' => 'static_pages#contact'
   get 'guide' => 'static_pages#guide'
   get 'legal/terms' => 'static_pages#tos'
+  get 'legal/privacy' => 'static_pages#privacy'
 
   root 'static_pages#home'
 
