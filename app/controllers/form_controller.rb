@@ -22,7 +22,7 @@ class FormController < ApplicationController
       flash[:notice] = "Form action handler created"
       redirect_to "/show/#{@form.admin_url}"
     else
-      flash[:error] = "Something went wrong. Please fill out the form completely."
+      flash[:error] = "Please fill out the form completely."
       redirect_to "/new"
     end
   end
@@ -49,7 +49,7 @@ class FormController < ApplicationController
 
   def show
     @form = Form.find_by! admin_url: params[:id]
-    flash[:error] = "This form has not yet been confirmed. Please check your email for a link." if not @form.confirmed
+    flash.now[:error] = "This form has not yet been confirmed. Please check your email for a link." if not @form.confirmed
   end
 
   def submit
