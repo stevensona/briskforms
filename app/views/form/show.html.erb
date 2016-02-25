@@ -14,12 +14,7 @@ Set your form's action attribute to:
 <div class="well"><%= "#{request.base_url}/go/#{@form.url}" %></div>
 
 <%= form_tag('/new', class:'form-horizontal') do %>
-  <div class="form-group">
-    <%= label_tag(:source_url, 'Source URL', class:'col-sm-3 control-label') %>
-    <div class="col-sm-9">
-    <p class="form-control-static"><%= @form.source_url %></p>
-    </div>
-  </div>
+
   <div class="form-group">
     <%= label_tag(:email, 'Response Email', class:'col-sm-3 control-label') %>
     <div class="col-sm-9">
@@ -32,12 +27,7 @@ Set your form's action attribute to:
       <p class="form-control-static"><%= @form.success_url %></p>
     </div>
   </div>
-  <div class="form-group">
-    <%= label_tag(:failure_url, 'Failure Redirect', class:'col-sm-3 control-label') %>
-    <div class="col-sm-9">
-      <p class="form-control-static"><%= @form.failure_url %></p>
-    </div>
-  </div>
+
 
   <div class="form-group">
     <div class="col-sm-offset-3 col-sm-9">

@@ -8,10 +8,10 @@ class FormController < ApplicationController
 
   def create
     @form = Form.new
-    @form.source_url = params['source_url']
+    #@form.source_url = params['source_url']
     @form.email = params['email']
     @form.success_url = params['success_url']
-    @form.failure_url = params['failure_url']
+    #@form.failure_url = params['failure_url']
     @form.url = SecureRandom.hex
     @form.admin_url = SecureRandom.hex
     @form.confirm_url = SecureRandom.hex
@@ -64,7 +64,7 @@ class FormController < ApplicationController
     else
       respond_to do |format|
         format.json { render :json => {status: 'fail', message: 'form not active'} }
-        format.html { redirect_to @form.failure_url }
+        format.html { redirect_to @form.success_url } #fail silently
       end
     end
   end
