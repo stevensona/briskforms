@@ -58,12 +58,22 @@ class FormController < ApplicationController
     if @form.confirmed
       FormMailer.form_submission(@form, params).deliver_now
       respond_to do |format|
-        format.json { render :json => {status: 'ok', message: 'form submitted'} }
+        format.json do
+          render :json => {
+            :status => :ok,
+            :message => 'form submitted'
+          }
+        end
         format.html { redirect_to @form.success_url }
       end
     else
       respond_to do |format|
-        format.json { render :json => {status: 'fail', message: 'form not active'} }
+        format.json do
+          render :json => {
+            :status => :error,
+            :message => 'form not activated'
+          }
+        end
         format.html { redirect_to @form.success_url } #fail silently
       end
     end
