@@ -60,10 +60,18 @@ class FormController < ApplicationController
       FormMailer.form_submission(@form, params).deliver_now
       respond_to do |format|
         format.json do
-          render :json => {
-            :status => :ok,
-            :message => 'form submitted'
-          }
+          if params[:callback]
+            render :json => {
+                :status => :ok,
+                :message => 'form submitted'
+            },
+            :callback => params[:callback]
+          else
+            render :json => {
+              :status => :ok,
+              :message => 'form submitted'
+            }
+          end
         end
         format.html { redirect_to @form.success_url }
       end
