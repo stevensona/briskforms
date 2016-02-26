@@ -63,7 +63,7 @@ class FormController < ApplicationController
           render :json => {
             :status => :ok,
             :message => 'form submitted'
-          }, params['callback']
+          }, :callback => params['callback']
         end
         format.html { redirect_to @form.success_url }
       end
@@ -73,7 +73,7 @@ class FormController < ApplicationController
           render :json => {
             :status => :error,
             :message => 'form not activated'
-          }, params['callback']
+          }, :callback => params['callback']
         end
         format.html { redirect_to @form.success_url } #fail silently
       end
