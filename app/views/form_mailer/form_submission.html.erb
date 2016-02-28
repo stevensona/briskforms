@@ -1,15 +1,56 @@
-<h1>New submission from your Brisk Form</h1>
-
-<h2>Contents</h2>
-
-<% @contents.each do |k, v| %>
-<% if k != 'controller' and k != 'action' and k != 'id' %>
-<b><%= k %></b> - <%= v %><br>
-<% end %>
-<% end %>
-
-<h2>Administration</h2>
-<p>Details for this form handler, click <a href="<%= "https://briskforms.com/show/#{@form.admin_url}" %>">here</a>. To stop receiving these emails, delete the form submission handler by clicking <a href="<%= "http://briskforms.com/delete/#{@form.admin_url}" %>">here</a>.</p>
-<p>Thanks for using Brisk Forms to process form submissions!</p>
-
--Brisk Forms
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <title>Brisk Form Notification</title>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="responsive.css">
+  </head>
+  <body style="margin:0; padding:0;" bgcolor="#F0F0F0" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+    <table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0">
+      <tr>
+        <td align="center" valign="top" bgcolor="#F0F0F0" style="background-color: #F0F0F0;">
+          <br>
+          <table border="0" width="600" cellpadding="0" cellspacing="0" class="container">
+            <tr>
+              <td class="container-padding header" align="left">
+                Brisk Form Notification
+                <p class="subtitle">New submission</p>
+                <!-- TODO: include name of originating site -->
+              </td>
+            </tr>
+            <tr>
+              <td class="container-padding content" align="left">
+                <br>
+                <!-- TODO: Choose from a list of random messages -->
+                <div class="title">You're popular!</div>
+                <br>
+                <div class="body-text">
+                  Someone just submitted a form, and here's what they had to say:
+                  <br>
+                  <blockquote>
+                    <% @contents.each do |k, v| %>
+                    <% if k != 'controller' and k != 'action' and k != 'id' %>
+                    <b><%= k %></b>
+                    -
+                    <%= v %><br>
+                    <% end %>
+                    <% end %>
+                  </blockquote>
+                  <br><br>
+                  <br><br>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="container-padding footer-text" align="center">
+                <br><br>
+                &copy; 2016 Brisk Forms
+                <br><br>
+                You are receiving this email because you opted in on our website.
+                <br>
+                Check your < href="<%= ">
