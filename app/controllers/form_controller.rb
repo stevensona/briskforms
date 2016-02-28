@@ -1,4 +1,5 @@
 require 'securerandom'
+
 class FormController < ApplicationController
 
   protect_from_forgery except: :submit
@@ -8,10 +9,10 @@ class FormController < ApplicationController
 
   def create
     @form = Form.new
-    @form.source_url = params['source_url']
+    #@form.source_url = params['source_url']
     @form.email = params['email']
     @form.success_url = params['success_url']
-    @form.failure_url = params['failure_url']
+    #@form.failure_url = params['failure_url']
     @form.url = SecureRandom.hex
     @form.admin_url = SecureRandom.hex
     @form.confirm_url = SecureRandom.hex
@@ -21,7 +22,7 @@ class FormController < ApplicationController
       flash[:notice] = "Form action handler created"
       redirect_to "/show/#{@form.admin_url}"
     else
-      flash[:error] = "Something went wrong. Please fill out the form completely."
+      flash[:error] = "Please fill out the form completely."
       redirect_to "/new"
     end
   end
@@ -43,26 +44,38 @@ class FormController < ApplicationController
   def delete
     Form.where(admin_url: params[:id]).destroy_all 
     flash[:notice] = "Form action handler destroyed"
-    redirect_to root_path
+    redirect_to '/new'
   end
 
   def show
     @form = Form.find_by! admin_url: params[:id]
-    flash[:error] = "This form has not yet been confirmed. Please check your email for a link." if not @form.confirmed
+    flash.now[:error] = "This form has not yet been confirmed. Please check your email for a link." if not @form.confirmed
   end
 
   def submit
     #TODO throttle submission rate to 10 per form per hour?
     @form = Form.find_by! url: params[:id]
-    if not request.referer.include? @form.source_url
-      #request not coming from designated url, not allowed
-      render status: :forbidden
+
+    if @form.confirmed
+      FormMailer.form_submission(@form, params).deliver_now
+      respond_to do |format|
+        format.json do
+          render :json => {
+            :status => :ok,
+            :message => 'form submitted'
+          }, :callback => params['callback']
+        end
+        format.html { redirect_to @form.success_url }
+      end
     else
-      if @form.confirmed
-        FormMailer.form_submission(@form, params).deliver_now
-        redirect_to @form.success_url #TODO direct to failure if something fucks up
-      else
-        redirect_to @form.failure_url #error form is not confirmed or  fail silently?  
+      respond_to do |format|
+        format.json do
+          render :json => {
+            :status => :error,
+            :message => 'form not activated'
+          }, :callback => params['callback']
+        end
+        format.html { redirect_to @form.success_url } #fail silently
       end
     end
   end
