@@ -1,6 +1,6 @@
 # Brisk Forms
 
-Free HTML form submission service for static sites. Keep your email address private. Hosted at [briskforms.com](http://briskforms.com/).
+Free, open-source HTML form submission service for static sites. Keep your email address private. Hosted at [briskforms.com](https://briskforms.com/).
 
 Submit your form to our URL and we'll forward the contents to your email. No database, no scripting, no cost! Ideal for people wishing to implement a contact form without exposing your email address on static sites such as those created with Jekyll, Pelican, or Hakyll.
 
