@@ -13,6 +13,9 @@
 Set your form's action attribute to:
 <div class="well"><%= "#{request.base_url}/go/#{@form.url}" %></div>
 
+Or use the following HTML tag:
+<div class="well"><%= "<form method=\"post\" action=\"#{request.base_url}/go/#{@form.url}\">" %></div>
+
 <%= form_tag('/new', class:'form-horizontal') do %>
 
   <div class="form-group">
