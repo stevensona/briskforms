@@ -9,10 +9,8 @@ class FormController < ApplicationController
 
   def create
     @form = Form.new
-    #@form.source_url = params['source_url']
     @form.email = params['email']
     @form.success_url = params['success_url']
-    #@form.failure_url = params['failure_url']
     @form.url = SecureRandom.hex
     @form.admin_url = SecureRandom.hex
     @form.confirm_url = SecureRandom.hex
