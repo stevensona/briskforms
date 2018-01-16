@@ -63,7 +63,7 @@ class FormController < ApplicationController
             :message => 'form submitted'
           }, :callback => params['callback']
         end
-        format.html { redirect_to @form.success_url }
+        format.html { redirect_to URI.escape(@form.success_url) }
       end
     else
       respond_to do |format|
@@ -73,7 +73,7 @@ class FormController < ApplicationController
             :message => 'form not activated'
           }, :callback => params['callback']
         end
-        format.html { redirect_to @form.success_url } #fail silently
+        format.html { redirect_to URI.escape(@form.success_url) } #fail silently
       end
     end
   end
