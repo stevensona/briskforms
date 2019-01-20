@@ -13,4 +13,8 @@ class Form < ActiveRecord::Base
   validates :success_url, presence: true
   validates :admin_url, presence: true
   validates :confirm_url, presence: true
+
+  has_secure_token :url
+  has_secure_token :admin_url
+  has_secure_token :confirm_url
 end
